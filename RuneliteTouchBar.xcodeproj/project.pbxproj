@@ -52,7 +52,7 @@
 		778F9701207E2D89007D0982 /* JavaTouchBarUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = JavaTouchBarUtils.mm; path = native/Bridged/JavaTouchBarUtils.mm; sourceTree = "<group>"; };
 		778F9702207E2D89007D0982 /* JavaTouchBarUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaTouchBarUtils.h; path = native/Bridged/JavaTouchBarUtils.h; sourceTree = "<group>"; };
 		77E658BF1F8F7218000832B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		CDF1658B287EF9F500FC2177 /* libJavaTouchBar.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = libJavaTouchBar.dylib; path = "/Users/patrick/Documents/Personal/Projects/Runelite Touch Bar Plugin/runelite-touch-bar-native-library/src/debug/resources/lib/libJavaTouchBar.dylib"; sourceTree = "<absolute>"; };
+		CD5B26BA2883459700DBDD07 /* libJavaTouchBar.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libJavaTouchBar.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,7 @@
 			);
 			name = JavaTouchBar;
 			productName = JTouchBar;
-			productReference = CDF1658B287EF9F500FC2177 /* libJavaTouchBar.dylib */;
+			productReference = CD5B26BA2883459700DBDD07 /* libJavaTouchBar.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -332,6 +332,7 @@
 		77EF78AA1F8F70DF00E7211F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = src/debug/resources/lib/;
@@ -345,6 +346,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/jre/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -359,6 +361,7 @@
 		77EF78AB1F8F70DF00E7211F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = src/release/resources/lib/;
@@ -372,6 +375,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/jre/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
