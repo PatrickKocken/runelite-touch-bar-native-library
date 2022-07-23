@@ -12,9 +12,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
       - name: Build
         run: |
           xcodebuild clean build -scheme JavaTouchBar-Release
+          
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -25,6 +27,7 @@ jobs:
           release_name: latest release
           draft: false
           prerelease: false
+          
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
@@ -35,3 +38,10 @@ jobs:
           asset_path: ./src/release/resources/lib/libJavaTouchBar.dylib
           asset_name: libJavaTouchBar.dylib
           asset_content_type: application/zip
+          
+      - name: Trigger Update Native Library workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Update Native Library
+          repo: PatrickKocken/runelite-touch-bar
+          token: ${{ secrets.WORKFLOW_TOKEN }}
