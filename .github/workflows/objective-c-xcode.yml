@@ -28,12 +28,16 @@ jobs:
         id: create-checksum
         run: shasum -a 512 src/release/resources/lib/libJavaTouchBar.dylib > checksum.txt
 
-      - name: Upload Artifact
-        id: upload-artifact
+      - name: Upload Checksum Artifact
+        id: upload-checksum-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: checksum.txt
+          path: checksum.txt
+
+      - name: Upload Native Library Artifact
+        id: upload-native-library-artifact
         uses: actions/upload-artifact@v3
         with:
           name: libJavaTouchBar.dylib
-          path: |
-              checksum.txt
-              src/release/resources/lib/libJavaTouchBar.dylib
-
+          path: src/release/resources/lib/libJavaTouchBar.dylib
