@@ -34,20 +34,13 @@ jobs:
           draft: false
           prerelease: false
           
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Artifact
+        id: upload-artifact
+        uses: actions/upload-artifact@v3
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./src/release/resources/lib/libJavaTouchBar.dylib
-          asset_name: libJavaTouchBar.dylib
-          asset_content_type: application/zip
+          name: libJavaTouchBar.dylib
+          path: src/release/resources/lib/libJavaTouchBar.dylib
           
-      - name: Trigger Update Native Library workflow
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: Update Native Library
-          repo: PatrickKocken/runelite-touch-bar
-          token: ${{ secrets.WORKFLOW_TOKEN }}
+      - name: Print sha512
+        id: print-sha512
+        run: shasum -a 256 src/release/resources/lib/libJavaTouchBar.dylib
